@@ -6,34 +6,32 @@
 
 //creo el script 
 
-async function  obtenerUsuarios()  {
+async function getUsers(){
 
-//try catch es la instruccion por excelencia para manejar errores y excepciones
-    try {
-        //1- hacemos la peticion al servidor 
-        console.log("cargando usuarios ...");
-        const response = await fetch('https://jsonplaceholder.typicode.com/users');
-        
-        //2- si hay un error 500 o 400 mostramos el error aqui
+
+    //creamos el try catch para manipular los datos y los errores en caso de que sucedan ¿
+    try{
+
+        const response = await fetch ("https://jsonplaceholder.typicode.com/users");
+
+        //validaciones de tipos de error 400 o 500 
         if(!response.ok){
-            throw new Error("Error no se pudo obtener los usuarios");
-            
+            console.log("error al obtener los usuarios !")                                                  
         }
 
-        //3- si las respuesta es correcta entonces convertimos a formato json y mostramos el objeto 
-        const usuarios  = await response.json();
+
+        //formateamos a formato JSON para mostrar los datos
+        const data  = await response.json();
+
+        const userNamesID = data.map(u=> `ID: ${u.id} username: ${u.username } `);
+        console.log(userNamesID);
 
 
-        //mapeamos para que solo muestre el nombre
-        const nombresConId = usuarios.map(u => `ID: ${u.id} - Nombre: ${u.name}`);
-        console.log("Lista de nombres:", nombresConId);
-    
-        
-    } catch(error){
-        console.error("Error en la peticion",error.message)
-        
+    }catch(error){
+
+        console.error("ERROR EN LA SOLICITUD: ",error.message)
+
     }
-
 }
 
-obtenerUsuarios();
+console.log(getUsers())
