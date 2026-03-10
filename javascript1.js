@@ -11,8 +11,8 @@ const arrayVentas =  [
     {id: 1, categoria: 'General', precio: 500},
 ]
 
-
-
+let var1 = parseInt(5.4)
+console.log (var1)
 
 
 //la funcion calcular Total calcula el total para una categoria en especifico 
