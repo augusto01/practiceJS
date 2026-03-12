@@ -23,6 +23,13 @@ const candidatos = [
 //definimos la funcion counterTechnologies para cumplir el enunciado 
 function counterTechnologies(pCandidatosArray){
 
+    //validacion de existencia
+    if (!pCandidatosArray){
+        console.log("Por favor ingresa un array !");
+        return {}
+        
+    }
+
     //definir un objetivo que va a contar la cantidad de veces que se repite una categoria 
     const counts = {};
 
@@ -41,5 +48,4 @@ function counterTechnologies(pCandidatosArray){
 }
 
 // Ejecución y prueba
-const resultado = counterTechnologies(candidatos);
-console.log("Resultado del conteo:", resultado);
+console.log(counterTechnologies());
