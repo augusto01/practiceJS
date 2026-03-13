@@ -1,6 +1,6 @@
 
 //url a la API
-const API_URL   = "https://jsonplaceholder.typicode.com/posts";
+const API_URL  = "https://jsonplaceholder.typicode.com/posts";
 
 
 
@@ -13,39 +13,37 @@ const miContenido = {
     userId: 1
 }
 
+async function sendObject(pObject){
 
-async function sendObject (pObject){
+    //1- validamos que el objeto exista y que sea un objeto
+    if(!pObject     || typeof pObject !== 'object'){
+        console.error("Inserta un objeto valido !");
+        return;
+    };
 
-
-    //validacion de existencia 
-    if (!pObject){
-        console.log("Objeto no insertado !");
-        return {}
+    //2- validamos que el objeto tenga un elemento
+    if(Object.keys(pObject).length === 0){
+                console.error("Inserta un objeto que no este vacio !");
+                return;
     }
 
 
-    //hacemos el try catch para hacer la peticion 
+    //3- si pasa las validaciones hacemos la peticion de tipo POST
     try {
-
-        //declamaramos la constante response para enviar los datos al servidor 
-        const response =  await fetch(API_URL, {method :"POST", 
-                                                headers :{'Content-Type' :'application/json; charset UTF-8  '},
-                                                body: JSON.stringify(pObject)
-        });
-
-        const data  =  await response.json();
-        console.log("Respuesta del servidor: ",data);
-
-
-        
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(pObject)
+      });
+      const data = await response.json();
+      console.log('Creado con éxito:', data);
     } catch (error) {
-        console.error("Ocurrio un error en el servidor",error.message);
+      console.error('Error en POST:', error);
     }
-
 
 }
 
 
-//mostramos los datos por consola 
-console.log(sendObject(miContenido));
 
+
+console.log(sendObject(miContenido));
