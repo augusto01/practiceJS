@@ -49,5 +49,5 @@ async function generarReporteStaff (){
 
 }
 
-
+//llamamos a la funcion para ejecutarla
 generarReporteStaff();
