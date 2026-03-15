@@ -35,14 +35,28 @@ export const ListUserss = () => {
     if (loading) return <h2 style={{ textAlign: 'center' }}>Cargando...</h2>;
 
     return (
-        <div>
-          {console.log(users)};
+        <div className='container'>
+            <div className='title'>
+                <h1>Usuarios traídos desde la API</h1>
+            </div>
+
+            {/* Este es el "padre" que debe tener el display: flex */}
+            <div className='grid'> 
+                {users.map(user => (
+                    <div key={user.id} className='card'>
+                        <h3>{user.name}</h3>
+                        <p>{user.email}</p>
+                        {/* Agregamos el botón para que tu función deleteUser sirva de algo */}
+                        <button 
+                            className='btn-delete' 
+                            onClick={() => deleteUser(user.id)}
+                        >
+                            Eliminar
+                        </button>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
 
-// 3. Importante: ¡No te olvides de los estilos!
-const containerStyle = { padding: '40px', backgroundColor: '#f4f7f6', minHeight: '100vh', fontFamily: 'sans-serif' };
-const gridStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '20px' };
-const cardStyle = { backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' };
-const buttonStyle = { backgroundColor: '#ff4d4d', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '5px', cursor: 'pointer' };

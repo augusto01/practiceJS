@@ -1,0 +1,62 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #8901de; /* El violeta que elegiste */
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* CONTENEDOR FLEX */
+.grid {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 20px;
+}
+
+/* CAJA (CARD) */
+.card {
+  background: #000000;
+  color: white; /* Para que se lea el texto sobre el fondo negro */
+  padding: 20px;
+  width: 300px; 
+  border-radius: 8px;
+  text-align: center;
+}
+
+
+
+/* BOTÓN */
+.btn-delete {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+/* MEDIA QUERY (Para celulares) */
+@media (max-width: 600px) {
+  .grid {
+    display: flex;
+    flex-direction: column; /* Las pone una debajo de otra */
+    align-items: center;
+  }
+
+  .card {
+    width: 100%; /* La caja ocupa todo el ancho disponible */
+    max-width: 350px;
+  }
+}
