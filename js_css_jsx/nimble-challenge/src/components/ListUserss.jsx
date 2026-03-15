@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export const ListUsers = () => {
+export const ListUserss = () => {
     const apiUrl = "https://jsonplaceholder.typicode.com/users";
 
     // 1. Corregido: user -> users (para que coincida con el map)
@@ -25,7 +25,7 @@ export const ListUsers = () => {
     }, []);
 
 
-   
+
 
     const deleteUser = (id) => {
         const filteredUsers = users.filter(u => u.id !== id);
@@ -35,23 +35,8 @@ export const ListUsers = () => {
     if (loading) return <h2 style={{ textAlign: 'center' }}>Cargando...</h2>;
 
     return (
-        <div style={containerStyle}>
-            <h1 style={{ textAlign: 'center' }}>Panel de Talento - Nimble Gravity</h1>
-            <div style={gridStyle}>
-                {users.map(user => (
-                    <div key={user.id} style={cardStyle}>
-                        <h3>{user.name}</h3>
-                        <p>📧 {user.email}</p>
-                        <p>🏢 {user.company.name}</p>
-                        <button 
-                            onClick={() => deleteUser(user.id)}
-                            style={buttonStyle}
-                        >
-                            Eliminar
-                        </button>
-                    </div>
-                ))}
-            </div>
+        <div>
+          {console.log(users)};
         </div>
     );
 };
