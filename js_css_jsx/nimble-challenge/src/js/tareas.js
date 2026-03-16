@@ -7,7 +7,9 @@ const tareas = [
   { titulo: "Practicar DOM", estado: "pendiente" },
   { titulo: "Entrevista Nimble", estado: "pendiente" },
   { titulo: "Hacer ejercicio", estado: "en progreso" },
-  { titulo: "Comprar pan", estado: "completada" }
+  { titulo: "Comprar pan", estado: "completada" },
+  { titulo: "Comprar pan", estado: "hola" },
+  { titulo: "Comprar pan", estado: "chau" }
 ];
 
 
@@ -28,10 +30,11 @@ function contarTareas (pArray){
 
         const status = item.estado;
 
+        /**conteo dinamico si hubiese mas estado imprimiria mas  */
         if(acc[status]){
             acc [status]++;
         }else{
-            acc[status] =1
+            acc[status] = 1;
         }
         return acc;
 
