@@ -48,11 +48,17 @@ function filterProducts  (pArrayProducts) {
 
     //devolvemos solo el nombre y la fecha
 
-    return [...productsOrder].map(product => `Producto: ${product.nombre} ____ Fecha: ${product.ingreso}`)
+    return productsOrder.map(product => {
+        return {
+            nombre: product.nombre,
+            ingreso: product.ingreso
+        };
+        // O si preferís string: `Producto: ${product.nombre} | Fecha: ${product.ingreso}`
+    });
 
 
 }
 
 
 //llamada a la funcion 
-console.table(filterProducts(stock));
+console.log(filterProducts(stock));
